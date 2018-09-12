@@ -1,7 +1,6 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
-  .crossType(CrossType.Pure)
   .in(file("."))
   .settings(
     name := "mathbridge",
