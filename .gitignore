@@ -1,0 +1,65 @@
+*.class
+*.log
+
+# sbt specific
+.cache/
+.history/
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+.cache*
+.settings
+.project
+.classpath
+*/bin
+
+# IntelliJ IDEA
+.idea
+*.iml
+out
+*.sc
+
+# GitBook
+doc/_book
+/_book
+
+# node
+
+node_modules/
+auth.conf
+prod.conf
+
+# sq specific
+
+sqgen/
+lib/
+res/
+demoop/
+gen/
+doc/
+coveragereports/*
+testreports/*
+temp/
+testout/*
+benchmarks
+bench/*.json
+*.jfr
+uiserver/src/main/assets/unidoc
+
+# C/C++ specific
+*.out
+*.so
+*.dll
+
+// other stuff
+*.gz
+*.csv
+*.hprof
