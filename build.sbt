@@ -59,7 +59,11 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "-author",
       "-groups",
       "-implicits"
-    )
+    ),
+    libraryDependencies ++= Seq(
+      "org.scalatest" %%% "scalatest" % Settings.versions.scalatest % "test",
+      "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test"
+    ),
   )
   .jvmSettings(
     parallelExecution in Test := true,
@@ -74,11 +78,48 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "-XX:+UseG1GC",
       "-XX:+UseStringDeduplication",
       "-Xmx3072m"),
+    sourceGenerators in Test += Def.task {
+      val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
+      IO.write(file, Settings.propConstants(1))
+      Seq(file)
+    }.taskValue
   )
   .jsSettings(
     scalaJSUseMainModuleInitializer in Test := false,
     scalaJSStage in Test := FullOptStage,
+    sourceGenerators in Test += Def.task {
+      val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
+      IO.write(file, Settings.propConstants(10))
+      Seq(file)
+    }.taskValue
   )
 
 lazy val mathbridgeJVM = mathbridge.jvm
 lazy val mathbridgeJS = mathbridge.js
+
+lazy val cleanAll = taskKey[Unit]("Cleans everything")
+lazy val compileAll = taskKey[Unit]("Compiles everything")
+lazy val testAll = taskKey[Unit]("Tests everything")
+lazy val publishLocalAll = taskKey[Unit]("Publishes everything locally")
+
+cleanAll := {
+  clean.in(mathbridgeJVM).value
+  clean.in(mathbridgeJS).value
+}
+
+compileAll := {
+  compile.in(mathbridgeJVM, Test).value
+  compile.in(mathbridgeJS, Test).value
+}
+
+testAll := {
+  test.in(mathbridgeJS, Test).value
+  test.in(mathbridgeJVM, Test).value
+}
+
+publishLocalAll := Def
+  .sequential(
+    publishLocal.in(mathbridgeJVM),
+    publishLocal.in(mathbridgeJS)
+  )
+  .value
