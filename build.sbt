@@ -5,7 +5,7 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
   .in(file("."))
   .settings(
     name := "mathbridge",
-    organization := "com.simianquant",
+    organization := "com.simianquant.mathbridge",
     version := Settings.versions.project,
     scalaVersion := Settings.versions.scala,
     wartremoverErrors in (Compile, compile) ++= Seq(
