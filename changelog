@@ -1,5 +1,8 @@
-version 0.1.1
+0.1.2
+	1. Add normal distribution bridge. For JVM, it is ApacheCommonsMath, for JS it is math.js
+
+0.1.1
 	1. Change organization to com.simianquant.mathbridge, to make it symmetric with others
 
-version 0.1.0
+0.1.0
 	1. Add integer power and integer power tests
