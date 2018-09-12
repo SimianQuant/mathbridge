@@ -73,6 +73,7 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
   .jvmSettings(
     parallelExecution in Test := true,
     fork := true,
+    libraryDependencies += "org.apache.commons" % "commons-math3" % Settings.versions.commonsMath,
     scalacOptions ++= Seq(
       "-Ywarn-dead-code",
       "-Ywarn-value-discard"

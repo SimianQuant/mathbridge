@@ -1,5 +1,6 @@
 object Settings {
   object versions {
+    val commonsMath: String = "3.6.1"
     val project: String = "0.1.2-SNAPSHOT"
     val scala: String = "2.12.6"
     val scalatest: String = "3.0.5"
