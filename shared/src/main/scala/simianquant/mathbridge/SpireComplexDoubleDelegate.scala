@@ -1,4 +1,4 @@
-package simianquant.std.field
+package simianquant.mathbridge
 
 import spire.algebra._
 import spire.math.Complex
