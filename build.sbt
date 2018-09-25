@@ -29,29 +29,27 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       Wart.TraversableOps,
       Wart.TryPartial
     ),
-    scalacOptions ++= {
-      List(
-        ("-Xlint:adapted-args,nullary-unit,inaccessible,nullary-override,infer-any,doc-detached,private-shadow," +
-          "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select,by-name-right-associative," +
-          "package-object-classes,unsound-match,stars-align,constant"),
-        "-Ywarn-unused:imports,patvars,privates,locals",
-        "-opt:l:method",
-        "-Ywarn-unused-import",
-        "-deprecation",
-        "-unchecked",
-        "-explaintypes",
-        "-encoding",
-        "UTF-8",
-        "-feature",
-        "-Xlog-reflective-calls",
-        "-Ywarn-inaccessible",
-        "-Ywarn-infer-any",
-        "-Ywarn-nullary-override",
-        "-Ywarn-nullary-unit",
-        "-Xfuture",
-        "-target:jvm-1.8"
-      )
-    },
+    scalacOptions ++= List(
+      ("-Xlint:adapted-args,nullary-unit,inaccessible,nullary-override,infer-any,doc-detached,private-shadow," +
+        "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select,by-name-right-associative," +
+        "package-object-classes,unsound-match,stars-align,constant"),
+      "-Ywarn-unused:imports,patvars,privates,locals",
+      "-opt:l:method",
+      "-Ywarn-unused-import",
+      "-deprecation",
+      "-unchecked",
+      "-explaintypes",
+      "-encoding",
+      "UTF-8",
+      "-feature",
+      "-Xlog-reflective-calls",
+      "-Ywarn-inaccessible",
+      "-Ywarn-infer-any",
+      "-Ywarn-nullary-override",
+      "-Ywarn-nullary-unit",
+      "-Xfuture",
+      "-target:jvm-1.8"
+    ),
     logBuffered in Test := true,
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oD"),
     scalacOptions in (Compile, doc) ++= Seq(
@@ -61,7 +59,8 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
     ),
     libraryDependencies ++= Seq(
       "org.scalatest" %%% "scalatest" % Settings.versions.scalatest % "test",
-      "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test"
+      "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test",
+      "org.typelevel" %%% "spire" % Settings.versions.spire
     ),
     publishArtifact in (Compile, packageBin) := true,
     publishArtifact in (Compile, packageDoc) := true,
