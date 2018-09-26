@@ -50,4 +50,21 @@ object SpireDoubleJetDelegate {
     new Jet[Double](math.floor(arg.real), new Array[Double](arg.infinitesimal.length))
   }
 
+  /** Calculates the cumulative normal of the jet
+    *
+    * @author Harshad Deo
+    * @since 0.1.5
+    */
+  final def cnorm(arg: Jet[Double]): Jet[Double] = {
+    val deriv = 0.3989422804014327 * math.exp(-arg.real * arg.real / 2)
+    val inf = arg.infinitesimal
+    val newInf = new Array[Double](inf.length)
+    var ctr = 0
+    while (ctr < newInf.length) {
+      newInf(ctr) = inf(ctr) * deriv
+      ctr += 1
+    }
+    new Jet[Double](NormalDistribution.cdf(arg.real), newInf)
+  }
+
 }
