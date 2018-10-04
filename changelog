@@ -1,5 +1,6 @@
 0.1.6
 	1. Add quantile function to normal distribution
+	2. Degrade scalajs version to 0.6.23
 
 0.1.5
 	1. Add cumulative normal to spire double jet delegate
