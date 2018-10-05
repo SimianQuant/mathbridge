@@ -91,7 +91,7 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
   )
   .jsSettings(
     jsDependencies += ProvidedJS / "math.min.js" commonJSName "math",
-    scalaJSUseMainModuleInitializer in Compile := true,
+    scalaJSUseMainModuleInitializer := true,
     scalaJSStage in Test := FullOptStage,
     sourceGenerators in Test += Def.task {
       val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
