@@ -11,6 +11,8 @@ import spire.math.Jet
   */
 object SpireDoubleJetDelegate {
 
+  private val _sqrt2pi = math.sqrt(2 * math.Pi)
+
   private val (eqd, fld, vs, ct, sg, tr, nr) = {
     import spire.implicits._
     (
@@ -65,6 +67,24 @@ object SpireDoubleJetDelegate {
       ctr += 1
     }
     new Jet[Double](NormalDistribution.cdf(arg.real), newInf)
+  }
+
+  /** Calculates the normal quantile of the jet
+    *
+    * @author Harshad Deo
+    * @since 0.1.6
+    */
+  final def qnorm(arg: Jet[Double]): Jet[Double] = {
+    val resReal = NormalDistribution.quantile(arg.real)
+    val deriv = _sqrt2pi * math.exp(-resReal * resReal / 2)
+    val inf = arg.infinitesimal
+    val newInf = new Array[Double](inf.length)
+    var ctr = 0
+    while (ctr < newInf.length) {
+      newInf(ctr) = inf(ctr) * deriv
+      ctr += 1
+    }
+    new Jet[Double](resReal, newInf)
   }
 
 }
