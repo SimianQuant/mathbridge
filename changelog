@@ -2,6 +2,7 @@
 	1. Add quantile function to normal distribution
 	2. Degrade scalajs version to 0.6.23
 	3. Add quantile to spire double jet delegate
+	4. Switch to coursier for dependency fetching
 
 0.1.5
 	1. Add cumulative normal to spire double jet delegate
