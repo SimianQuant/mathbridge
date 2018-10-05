@@ -76,7 +76,7 @@ object SpireDoubleJetDelegate {
     */
   final def qnorm(arg: Jet[Double]): Jet[Double] = {
     val resReal = NormalDistribution.quantile(arg.real)
-    val deriv = _sqrt2pi * math.exp(-resReal * resReal / 2)
+    val deriv = _sqrt2pi * math.exp(resReal * resReal / 2)
     val inf = arg.infinitesimal
     val newInf = new Array[Double](inf.length)
     var ctr = 0
