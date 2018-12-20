@@ -108,22 +108,22 @@ lazy val compileAll = taskKey[Unit]("Compiles everything")
 lazy val testAll = taskKey[Unit]("Tests everything")
 lazy val publishLocalSafeAll = taskKey[Unit]("Publishes everything locally")
 
-cleanAll := {
+cleanAll in ThisBuild := {
   clean.in(mathbridgeJVM).value
   clean.in(mathbridgeJS).value
 }
 
-compileAll := {
+compileAll in ThisBuild := {
   compile.in(mathbridgeJVM, Test).value
   compile.in(mathbridgeJS, Test).value
 }
 
-testAll := {
+testAll in ThisBuild := {
   test.in(mathbridgeJS, Test).value
   test.in(mathbridgeJVM, Test).value
 }
 
-publishLocalSafeAll := Def
+publishLocalSafeAll in ThisBuild := Def
   .sequential(
     cleanAll,
     compileAll,
