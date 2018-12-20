@@ -3,6 +3,7 @@
 	2. Add RationalApi, SpireComplexDoubleApi and SpireJetDoubleApi
 	3. Rename intMultiply in delegates to integerMultiply
 	4. Fix hyperbolic bug in SpireComplexDoubleDelegate
+	5. Use FastOpt in testJS
 
 0.1.6
 	1. Add quantile function to normal distribution
