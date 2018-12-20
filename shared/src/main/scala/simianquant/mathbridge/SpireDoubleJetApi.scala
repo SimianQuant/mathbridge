@@ -27,6 +27,15 @@ trait SpireDoubleJetApi extends AnyInstances with AllSyntax with SpireDoubleJetD
     def one(implicit dim: JetDim): SpireDoubleJet = Jet.one
     def apply[A](real: A)(implicit nr: Numeric[A], dim: JetDim): SpireDoubleJet = Jet(nr.toDouble(real))
     def apply[A](real: A, k: Int)(implicit nr: Numeric[A], dim: JetDim): SpireDoubleJet = Jet(nr.toDouble(real), k)
+    def apply[A, B](real: A, infinitesimal: Array[B])(implicit ev0: Numeric[A], ev1: Numeric[B]): SpireDoubleJet = {
+      val infConv = new Array[Double](infinitesimal.length)
+      var ctr = 0
+      while (ctr < infConv.length) {
+        infConv(ctr) = ev1.toDouble(infinitesimal(ctr))
+        ctr += 1
+      }
+      new SpireDoubleJet(ev0.toDouble(real), infConv)
+    }
   }
 
   implicit def numeric2SpireDoubleJet[A](real: A)(implicit nr: Numeric[A], dim: JetDim): SpireDoubleJet =
