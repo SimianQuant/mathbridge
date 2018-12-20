@@ -3,7 +3,7 @@ package simianquant.mathbridge
 import spire.std.AnyInstances
 import spire.syntax.AllSyntax
 
-/** Utility type to club all imports required to use [[spire.Rational]]
+/** Utility type to club all imports required to use [[spire.math.Rational]]
   *
   * @author Harshad Deo
   * @since 0.2.0
