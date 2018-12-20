@@ -27,7 +27,7 @@ object SpireDoubleJetDelegate {
 
   final def add(a: Jet[Double], b: Jet[Double]): Jet[Double] = a.+(b)(fld, vs)
   final def subtract(a: Jet[Double], b: Jet[Double]): Jet[Double] = a.-(b)(fld, vs)
-  final def intMultiply(a: Jet[Double], b: Int): Jet[Double] = a.*(b)(fld, vs)
+  final def integerMultiply(a: Jet[Double], b: Int): Jet[Double] = a.*(b)(fld, vs)
   final def multiply(a: Jet[Double], b: Jet[Double]): Jet[Double] = a.*(b)(fld, vs)
   final def divide(a: Jet[Double], b: Jet[Double]): Jet[Double] = a./(b)(fld, vs)
   final def integerPower(base: Jet[Double], i: Int): Jet[Double] = base.**(i)(eqd, fld, vs)

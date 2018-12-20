@@ -29,9 +29,9 @@ trait SpireComplexDoubleDelegate extends Serializable {
   def arcsin(arg: Complex[Double]): Complex[Double] = arg.asin(fld, nr, tr, sg)
   def arccos(arg: Complex[Double]): Complex[Double] = arg.acos(fld, nr, tr, sg)
   def arctan(arg: Complex[Double]): Complex[Double] = arg.atan(fld, nr, tr, sg)
-  def sinh(arg: Complex[Double]): Complex[Double] = arg.sin(fld, tr)
-  def cosh(arg: Complex[Double]): Complex[Double] = arg.cos(fld, tr)
-  def tanh(arg: Complex[Double]): Complex[Double] = arg.tan(fld, tr)
+  def sinh(arg: Complex[Double]): Complex[Double] = arg.sinh(fld, tr)
+  def cosh(arg: Complex[Double]): Complex[Double] = arg.cosh(fld, tr)
+  def tanh(arg: Complex[Double]): Complex[Double] = arg.tanh(fld, tr)
   def absDiff(arg1: Complex[Double], arg2: Complex[Double]): Double = subtract(arg1, arg2).abs(fld, nr, sg)
 }
 
