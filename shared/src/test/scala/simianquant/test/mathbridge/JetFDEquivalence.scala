@@ -5,7 +5,7 @@ import org.scalatest.prop.Checkers
 import org.scalacheck.Prop.forAll
 import org.scalactic.anyvals.PosInt
 import org.scalatest.PropSpec
-import simianquant.mathbridge.{NormalDistribution, SpireDoubleJetDelegate}
+import simianquant.mathbridge.{NormalDistribution, SpireJetDoubleDelegate}
 import spire.implicits._
 import spire.math.{Jet, JetDim}
 
@@ -26,7 +26,7 @@ final class JetFDEquivalence extends PropSpec with Checkers {
       val expectedResidual = (NormalDistribution.cdf(x + _h) - NormalDistribution.cdf(x - _h)) / (2 * _h)
 
       val jet = Jet(x) + Jet.h[Double](0)
-      val resJet = SpireDoubleJetDelegate.cnorm(jet)
+      val resJet = SpireJetDoubleDelegate.cnorm(jet)
 
       val realDiff = math.abs(resJet.real - expectedReal)
       val residualDiff = math.abs(resJet.infinitesimal(0) - expectedResidual)
@@ -55,7 +55,7 @@ final class JetFDEquivalence extends PropSpec with Checkers {
         val expectedResidual = (NormalDistribution.quantile(x + _h) - NormalDistribution.quantile(x - _h)) / (2 * _h)
 
         val jet = Jet(x) + Jet.h[Double](0)
-        val resJet = SpireDoubleJetDelegate.qnorm(jet)
+        val resJet = SpireJetDoubleDelegate.qnorm(jet)
 
         val realDiff = math.abs(resJet.real - expectedReal)
         val residualDiff = math.abs(resJet.infinitesimal(0) - expectedResidual)
