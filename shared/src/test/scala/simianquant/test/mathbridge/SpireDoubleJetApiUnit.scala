@@ -34,6 +34,7 @@ final class SpireDoubleJetApiUnit extends FlatSpec {
     assertTypeError("SDJ(1.2, 2)")
     assertTypeError("SDJ(1.3f, 0)")
     assertTypeError("SDJ(1L, 3)")
+    assertCompiles("SDJ(1.2, Array(1, 2, 3, 4))")
   }
 
   it should "pass construction success tests" in {
@@ -66,15 +67,21 @@ final class SpireDoubleJetApiUnit extends FlatSpec {
     assertCompiles("SDJ(1.2, 2)")
     assertCompiles("SDJ(1.3f, 0)")
     assertCompiles("SDJ(1L, 3)")
+
+    assertCompiles("SDJ(1.2, Array(1, 2, 3, 4))")
   }
 
   it should "pass construction equivalence tests" in {
-    implicit val _dim = JetDim(10)
+    implicit val _dim = JetDim(5)
 
     assert(SDJ.zero == Jet.zero[Double])
     assert(SDJ.one == Jet.one[Double])
     assert(SDJ(1.3) == Jet(1.3))
-    assert(SDJ(1.2, 4) == Jet(1.2, 4))
+    assert(SDJ(1.2, 4) == SDJ(1.2, 4))
+    assert(SDJ(1.2, 0) == SDJ(1.2, Array(1, 0, 0, 0, 0)))
+    assert(SDJ(1.2, 1) == SDJ(1.2, Array(0, 1, 0, 0, 0)))
+    assert(SDJ(1.2, 2) == SDJ(1.2, Array(0, 0, 1, 0, 0)))
+    assert(SDJ(1.2, 3) == SDJ(1.2, Array(0, 0, 0, 1, 0)))
   }
 
   it should "pass operations test" in {
