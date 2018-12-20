@@ -9,7 +9,7 @@ import spire.math.Jet
   * @author Harshad Deo
   * @since 0.1.3
   */
-trait SpireJetDoubleDelegate {
+trait SpireDoubleJetJetDelegate {
 
   private val _sqrt2pi = math.sqrt(2 * math.Pi)
 
@@ -89,4 +89,4 @@ trait SpireJetDoubleDelegate {
 
 }
 
-object SpireJetDoubleDelegate extends SpireJetDoubleDelegate
+object SpireDoubleJetJetDelegate extends SpireDoubleJetJetDelegate

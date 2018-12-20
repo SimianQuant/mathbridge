@@ -1,9 +1,8 @@
 0.2.0
 	1. Add external API mappings
-	2. Rename SpireDoubleJet to SpireJetDouble, to keep it consistent with the downstream library
-	3. Add RationalApi, SpireComplexDoubleApi and SpireJetDoubleApi
-	4. Rename intMultiply in delegates to integerMultiply
-	5. Fix hyperbolic bug in SpireComplexDoubleDelegate
+	2. Add RationalApi, SpireComplexDoubleApi and SpireJetDoubleApi
+	3. Rename intMultiply in delegates to integerMultiply
+	4. Fix hyperbolic bug in SpireComplexDoubleDelegate
 
 0.1.6
 	1. Add quantile function to normal distribution
