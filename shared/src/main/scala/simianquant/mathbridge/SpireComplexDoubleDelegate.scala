@@ -15,7 +15,7 @@ trait SpireComplexDoubleDelegate extends Serializable {
   }
   def add(lhs: Complex[Double], rhs: Complex[Double]): Complex[Double] = lhs.+(rhs)(fld)
   def subtract(lhs: Complex[Double], rhs: Complex[Double]): Complex[Double] = lhs.-(rhs)(fld)
-  def intMultiply(lhs: Complex[Double], rhs: Int): Complex[Double] = lhs.*(rhs)(fld)
+  def integerMultiply(lhs: Complex[Double], rhs: Int): Complex[Double] = lhs.*(rhs)(fld)
   def multiply(lhs: Complex[Double], rhs: Complex[Double]): Complex[Double] = lhs.*(rhs)(fld)
   def divide(lhs: Complex[Double], rhs: Complex[Double]): Complex[Double] = lhs./(rhs)(fld, sg)
   def integerPower(base: Complex[Double], pow: Int): Complex[Double] = base.**(pow)(fld, nr, sg, tr)
