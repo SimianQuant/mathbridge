@@ -1,5 +1,6 @@
 package simianquant.mathbridge
 
+import language.implicitConversions
 import spire.math.{Jet, Numeric}
 import spire.std.AnyInstances
 import spire.syntax.AllSyntax
@@ -27,6 +28,9 @@ trait SpireDoubleJetApi extends AnyInstances with AllSyntax with SpireDoubleJetD
     def apply[A](real: A)(implicit nr: Numeric[A], dim: JetDim): SpireDoubleJet = Jet(nr.toDouble(real))
     def apply[A](real: A, k: Int)(implicit nr: Numeric[A], dim: JetDim): SpireDoubleJet = Jet(nr.toDouble(real), k)
   }
+
+  implicit def numeric2SpireDoubleJet[A](real: A)(implicit nr: Numeric[A], dim: JetDim): SpireDoubleJet =
+    SpireDoubleJet(real)
 
   val SDJ = SpireDoubleJet
 }
