@@ -19,11 +19,6 @@ final class RationalApiUnit extends FlatSpec {
     assertCompiles("""val a = Rational(2, 3)""")
     assertCompiles("""val a = Rational(2, 3L)""")
 
-    assertCompiles("Rational(3) + Rational(2.3)")
-    assertCompiles("Rational(3) - Rational(2.3)")
-    assertCompiles("Rational(3) * Rational(2.3)")
-    assertCompiles("Rational(3, 5) / Rational(2.3)")
-
     assertTypeError("""val a: Rational = "foo" """)
   }
 
