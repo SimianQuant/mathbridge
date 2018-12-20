@@ -1,3 +1,8 @@
+0.2.0
+	1. Add external API mappings
+	2. Rename SpireDoubleJet to SpireJetDouble, to keep it consistent with the downstream library
+	3. Add RationalApi, SpireComplexDoubleApi and SpireJetDoubleApi
+
 0.1.6
 	1. Add quantile function to normal distribution
 	2. Degrade scalajs version to 0.6.23

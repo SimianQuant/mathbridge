@@ -8,7 +8,7 @@ import spire.math.Complex
   * @author Harshad Deo
   * @since 0.1.3
   */
-object SpireComplexDoubleDelegate extends Serializable {
+trait SpireComplexDoubleDelegate extends Serializable {
   private final val (fld, sg, nr, tr): (Field[Double], Signed[Double], NRoot[Double], Trig[Double]) = {
     import spire.implicits._
     (implicitly[Field[Double]], implicitly[Signed[Double]], implicitly[NRoot[Double]], implicitly[Trig[Double]])
@@ -34,3 +34,5 @@ object SpireComplexDoubleDelegate extends Serializable {
   def tanh(arg: Complex[Double]): Complex[Double] = arg.tan(fld, tr)
   def absDiff(arg1: Complex[Double], arg2: Complex[Double]): Double = subtract(arg1, arg2).abs(fld, nr, sg)
 }
+
+object SpireComplexDoubleDelegate extends SpireComplexDoubleDelegate
