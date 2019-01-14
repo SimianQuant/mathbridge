@@ -2,7 +2,7 @@ object Settings {
   object versions {
     val commonsMath: String = "3.6.1"
     val project: String = "0.2.2-SNAPSHOT"
-    val scala: String = "2.12.6"
+    val scala: String = "2.12.8"
     val scalatest: String = "3.0.5"
     val scalacheck: String = "1.14.0"
     val spire: String = "0.16.0"
