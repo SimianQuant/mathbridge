@@ -1,11 +1,12 @@
 package simianquant.test.mathbridge
 
 import org.scalatest.FlatSpec
-import simianquant.mathbridge.RationalApi._
 
 final class RationalApiUnit extends FlatSpec {
 
   it should "pass compilation tests" in {
+    import simianquant.mathbridge.RationalApi._
+
     assertCompiles("""val a: Rational = 1""")
     assertCompiles("""val a: Rational = 1.2""")
     assertCompiles("""val a: Rational = 1.2f""")
@@ -21,5 +22,13 @@ final class RationalApiUnit extends FlatSpec {
 
     assertTypeError("""val a: Rational = "foo" """)
   }
+
+  it should "pass value equivalence unit" in {
+    val v1 = simianquant.mathbridge.RationalApi.Rational(2, 3)
+    val v2 = spire.math.Rational(2, 3)
+    assert(v1 == v2)
+  }
+
+
 
 }
