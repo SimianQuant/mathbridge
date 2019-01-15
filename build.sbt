@@ -61,13 +61,7 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "org.scalatest" %%% "scalatest" % Settings.versions.scalatest % "test",
       "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test",
       "org.typelevel" %%% "spire" % Settings.versions.spire
-    ),
-    publishArtifact in (Compile, packageBin) := true,
-    publishArtifact in (Compile, packageDoc) := true,
-    publishArtifact in (Compile, packageSrc) := false,
-    publishArtifact in (Test, packageBin) := false,
-    publishArtifact in (Test, packageDoc) := false,
-    publishArtifact in (Test, packageSrc) := false
+    )
   )
   .jvmSettings(
     parallelExecution in Test := true,
