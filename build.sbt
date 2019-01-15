@@ -61,7 +61,33 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "org.scalatest" %%% "scalatest" % Settings.versions.scalatest % "test",
       "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test",
       "org.typelevel" %%% "spire" % Settings.versions.spire
-    )
+    ),
+    scmInfo := Some(
+      ScmInfo(
+        url("https://github.com/SimianQuant/mathbridge"),
+        "scm:git@github.com:SimianQuant/mathbridge.git"
+      )
+    ),
+    developers := List(
+      Developer(
+        id = "harshad-deo",
+        name = "Harshad Deo",
+        email = "harshad@simianquant.com",
+        url = url("https://github.com/harshad-deo")
+      )
+    ),
+    description := "A bridge to shareable mathematical functions",
+    licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt")),
+    homepage := Some(url("https://github.com/SimianQuant/mathbridge")),
+    pomIncludeRepository := { _ =>
+      false
+    },
+    publishTo := {
+      val nexus = "https://oss.sonatype.org/"
+      if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+      else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    },
+    publishMavenStyle := true
   )
   .jvmSettings(
     parallelExecution in Test := true,
@@ -102,6 +128,10 @@ lazy val testAll = taskKey[Unit]("Tests everything")
 lazy val buildCoverage = taskKey[Unit]("Generate coverage report")
 lazy val publishLocalSafeAll = taskKey[Unit]("Publishes everything locally")
 
+lazy val releaseCommand = Command.command("release") { state =>
+  "cleanAll" :: "testAll" :: "mathbridgeJVM/publishSigned" :: "mathbridgeJS/publishSigned" :: "sonatypeRelease" :: state
+}
+
 cleanAll in ThisBuild := {
   clean.in(mathbridgeJVM).value
   clean.in(mathbridgeJS).value
@@ -134,3 +164,5 @@ publishLocalSafeAll in ThisBuild := Def
     publishLocal.in(mathbridgeJS)
   )
   .value
+
+commands in ThisBuild += releaseCommand
