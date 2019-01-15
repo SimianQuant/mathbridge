@@ -105,6 +105,7 @@ lazy val mathbridgeJS = mathbridge.js
 lazy val cleanAll = taskKey[Unit]("Cleans everything")
 lazy val compileAll = taskKey[Unit]("Compiles everything")
 lazy val testAll = taskKey[Unit]("Tests everything")
+lazy val buildCoverage = taskKey[Unit]("Generate coverage report")
 lazy val publishLocalSafeAll = taskKey[Unit]("Publishes everything locally")
 
 cleanAll in ThisBuild := {
@@ -121,6 +122,14 @@ testAll in ThisBuild := {
   test.in(mathbridgeJS, Test).value
   test.in(mathbridgeJVM, Test).value
 }
+
+buildCoverage in ThisBuild := Def
+  .sequential(
+    clean.in(mathbridgeJVM),
+    test.in(mathbridgeJVM, Test),
+    coverageReport.in(mathbridgeJVM)
+  )
+  .value
 
 publishLocalSafeAll in ThisBuild := Def
   .sequential(
