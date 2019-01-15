@@ -4,6 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/63k3tyaijgob1o63?svg=true)](https://ci.appveyor.com/project/harshad-deo/mathbridge)
 [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-0.6.17.svg)](https://www.scala-js.org)
 [![Coverage Status](https://coveralls.io/repos/github/SimianQuant/mathbridge/badge.svg?branch=master)](https://coveralls.io/github/SimianQuant/mathbridge?branch=master)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.simianquant/mathbridge_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.simianquant/mathbridge_2.12)
 
 Mathbridge adds a thin wrapper over open source mathematical libraries, that aims to bridge the deficiencies in each. As such, 
 
