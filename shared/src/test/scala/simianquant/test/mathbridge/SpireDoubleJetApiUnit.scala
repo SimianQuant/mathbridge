@@ -2,6 +2,7 @@ package simianquant.test.mathbridge
 
 import org.scalatest.FlatSpec
 import simianquant.mathbridge.SpireDoubleJetApi._
+import simianquant.mathbridge.{SpireDoubleJetDelegate => SD}
 import spire.math.Jet
 
 final class SpireDoubleJetApiUnit extends FlatSpec {
@@ -84,7 +85,7 @@ final class SpireDoubleJetApiUnit extends FlatSpec {
     assert(SDJ(1.2, 3) == SDJ(1.2, Array(0, 0, 0, 1, 0)))
   }
 
-  it should "pass operations test" in {
+  it should "pass operations compilation test" in {
     implicit val _dim = JetDim(10)
 
     val a = SDJ(1.2, 3)
@@ -132,6 +133,36 @@ final class SpireDoubleJetApiUnit extends FlatSpec {
     assertCompiles("floor(a)")
     assertCompiles("cnorm(a)")
     assertCompiles("qnorm(a)")
+  }
+
+  it should "pass operations equivalence test" in {
+    implicit val _dim = JetDim(10)
+
+    val a = SDJ(1.2, 3)
+    val b = SDJ(0.9, 2)
+
+    assert(a + b == SD.add(a, b))
+    assert(a - b == SD.subtract(a, b))
+    assert(a * 3 == SD.integerMultiply(a, 3))
+    assert(a * b == SD.multiply(a, b))
+    assert(a / b == SD.divide(a, b))
+    assert(a ** 3 == SD.integerPower(a, 3))
+    assert(a ** b == SD.pow(a, b))
+    assert(a.exp == SD.exp(a))
+    assert(a.sqrt == SD.sqrt(a))
+    assert(a.log == SD.log(a))
+    assert(a.sin == SD.sin(a))
+    assert(a.cos == SD.cos(a))
+    assert(a.tan == SD.tan(a))
+    assert(b.asin == SD.arcsin(b))
+    assert(b.acos == SD.arccos(b))
+    assert(a.atan == SD.arctan(a))
+    assert(a.sinh == SD.sinh(a))
+    assert(a.cosh == SD.cosh(a))
+    assert(a.tanh == SD.tanh(a))
+
+    assert(SD.floor(a) == SDJ(1.0))
+    assert(SD.floor(b) == SDJ(0.0))
   }
 
 }
