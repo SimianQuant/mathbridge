@@ -70,6 +70,14 @@ final class SpireDoubleJetApiUnit extends FlatSpec {
     assertCompiles("SDJ(1L, 3)")
 
     assertCompiles("SDJ(1.2, Array(1, 2, 3, 4))")
+
+    val convInt: SDJ = 1
+    val convFloat: SDJ = 1f
+    val convRational: SDJ = spire.math.Rational(1)
+
+    assert(convInt == SDJ(1.0))
+    assert(convFloat == SDJ(1.0))
+    assert(convRational == SDJ(1.0))
   }
 
   it should "pass construction equivalence tests" in {
