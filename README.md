@@ -5,7 +5,8 @@
 [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-0.6.17.svg)](https://www.scala-js.org)
 [![Coverage Status](https://coveralls.io/repos/github/SimianQuant/mathbridge/badge.svg?branch=master)](https://coveralls.io/github/SimianQuant/mathbridge?branch=master)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.simianquant/mathbridge_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.simianquant/mathbridge_2.12)
-[![Scaladoc](http://javadoc-badge.appspot.com/com.simianquant/mathbridge_2.12.svg?label=scaladoc)](http://javadoc-badge.appspot.com/com.simianquant/mathbridge_2.12) [![Join the chat at https://gitter.im/SimianQuant/mathbridge](https://badges.gitter.im/SimianQuant/mathbridge.svg)](https://gitter.im/SimianQuant/mathbridge?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Scaladoc](http://javadoc-badge.appspot.com/com.simianquant/mathbridge_2.12.svg?label=scaladoc)](http://javadoc-badge.appspot.com/com.simianquant/mathbridge_2.12) 
+[![Join the chat at https://gitter.im/SimianQuant/mathbridge](https://badges.gitter.im/SimianQuant/mathbridge.svg)](https://gitter.im/SimianQuant/mathbridge?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Mathbridge adds a thin wrapper over open source mathematical libraries, that aims to bridge the deficiencies in each. As such, 
 
