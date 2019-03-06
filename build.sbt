@@ -129,7 +129,7 @@ lazy val buildCoverage = taskKey[Unit]("Generate coverage report")
 lazy val publishLocalSafeAll = taskKey[Unit]("Publishes everything locally")
 
 lazy val releaseCommand = Command.command("release") { state =>
-  "cleanAll" :: "testAll" :: "mathbridgeJVM/publishSigned" :: "mathbridgeJS/publishSigned" :: "sonatypeRelease" :: state
+  "cleanAll" :: "testAll" :: "mathbridgeJVM/publishSigned" :: "mathbridgeJS/publishSigned" :: "mathbridgeJVM/sonatypeRelease" :: state
 }
 
 cleanAll in ThisBuild := {
