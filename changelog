@@ -1,3 +1,6 @@
+0.2.3
+	1. Add scalar operations to Jet
+
 0.2.2
 	1. bump scala to 2.12.8, crossProject to 0.6.0 and scalajs to 0.6.26, sbt to 1.2.1
 

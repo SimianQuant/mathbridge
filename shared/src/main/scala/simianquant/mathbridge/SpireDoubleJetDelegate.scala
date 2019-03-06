@@ -13,7 +13,7 @@ trait SpireDoubleJetDelegate {
 
   private val _sqrt2pi = math.sqrt(2 * math.Pi)
 
-  private val (eqd, fld, vs, ct, sg, tr, nr) = {
+  private val (eqd, fld, vs, ct, sg, tr, nr, cm) = {
     import spire.implicits._
     (
       implicitly[Eq[Double]],
@@ -22,15 +22,26 @@ trait SpireDoubleJetDelegate {
       implicitly[ClassTag[Double]],
       implicitly[Signed[Double]],
       implicitly[Trig[Double]],
-      implicitly[NRoot[Double]])
+      implicitly[NRoot[Double]],
+      implicitly[CModule[Array[Double], Double]])
   }
 
+  final def add(a: Jet[Double], b: Double): Jet[Double] = a.+(b)(fld)
+  final def add(a: Double, b: Jet[Double]): Jet[Double] = b.+(a)(fld)
   final def add(a: Jet[Double], b: Jet[Double]): Jet[Double] = a.+(b)(fld, vs)
+  final def subtract(a: Jet[Double], b: Double): Jet[Double] = a.-(b)(fld)
+  final def subtract(a: Double, b: Jet[Double]): Jet[Double] = b.unary_-()(fld, vs).+(a)(fld)
   final def subtract(a: Jet[Double], b: Jet[Double]): Jet[Double] = a.-(b)(fld, vs)
   final def integerMultiply(a: Jet[Double], b: Int): Jet[Double] = a.*(b)(fld, vs)
+  final def multiply(a: Jet[Double], b: Double): Jet[Double] = a.*(b)(fld, vs)
+  final def multiply(a: Double, b: Jet[Double]): Jet[Double] = b.*(a)(fld, vs)
   final def multiply(a: Jet[Double], b: Jet[Double]): Jet[Double] = a.*(b)(fld, vs)
+  final def divide(a: Jet[Double], b: Double): Jet[Double] = a./(b)(fld, vs)
+  final def divide(a: Double, b: Jet[Double]): Jet[Double] = b.**(-1)(eqd, fld, vs).*(a)(fld, vs)
   final def divide(a: Jet[Double], b: Jet[Double]): Jet[Double] = a./(b)(fld, vs)
   final def integerPower(base: Jet[Double], i: Int): Jet[Double] = base.**(i)(eqd, fld, vs)
+  final def pow(base: Jet[Double], arg: Double): Jet[Double] = base.pow(arg)(eqd, fld, sg, tr, vs)
+  final def pow(base: Double, arg: Jet[Double]): Jet[Double] = arg.powScalarToJet(base)(ct, eqd, fld, cm, sg, tr)
   final def pow(base: Jet[Double], arg: Jet[Double]): Jet[Double] = base.**(arg)(ct, eqd, fld, sg, tr, vs)
   final def exp(arg: Jet[Double]): Jet[Double] = arg.exp()(fld, tr, vs)
   final def sqrt(arg: Jet[Double]): Jet[Double] = arg.sqrt()(fld, nr, vs)
