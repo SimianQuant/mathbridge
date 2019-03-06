@@ -13,7 +13,7 @@ Mathbridge adds a thin wrapper over open source mathematical libraries, that aim
 1. It provides default implementations for the mathematical operators supported by the SimianQuant library
 1. It patches over errors in open source implementations of certain functions (e.g. floor of `spire.math.Jet`)
 1. It provides single line imports to use `spire` types
-1. It provides a consistent API across JVM and JS targets for non-standard function (e.g. Cumulative Normal)
+1. It provides a consistent API across JVM and JS targets for non-standard functions (e.g. Cumulative Normal)
 
 ## To Use
 
