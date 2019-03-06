@@ -20,6 +20,6 @@ Mathbridge adds a thin wrapper over open source mathematical libraries, that aim
 Add the following line to your `build.sbt` file:
 
 ```scala
-libraryDependencies += "com.simianquant" %% "mathbridge" % "0.2.2" // scala-jvm
-libraryDependencies += "com.simianquant" %%% "mathbridge" % "0.2.2" // scala-js/cross
+libraryDependencies += "com.simianquant" %% "mathbridge" % "0.2.3" // scala-jvm
+libraryDependencies += "com.simianquant" %%% "mathbridge" % "0.2.3" // scala-js/cross
 ```
