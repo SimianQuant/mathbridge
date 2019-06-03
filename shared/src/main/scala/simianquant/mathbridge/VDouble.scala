@@ -16,7 +16,7 @@ sealed trait VDouble {
     */
   def size: Int
 
-  /** Returns the element at the index, otherwise throws an [[java.lang.IndexOutOfBounds]] exception.
+  /** Returns the element at the index, otherwise throws an [[java.lang.IndexOutOfBoundsException]] exception.
     *
     * @author Harshad Deo
     * @since 0.3.0
@@ -57,7 +57,6 @@ final class VDoubleFixed private (private val backing: Array[Double]) extends VD
     case that: VDoubleFixed =>
       (this eq that) || (
         (this.backing.length == that.backing.length) &&
-          (this.## == that.##) &&
           (this.backing.sameElements(that.backing))
       )
     case _ => false
