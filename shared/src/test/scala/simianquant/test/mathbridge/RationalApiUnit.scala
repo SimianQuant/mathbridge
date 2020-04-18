@@ -29,6 +29,4 @@ final class RationalApiUnit extends FlatSpec {
     assert(v1 == v2)
   }
 
-
-
 }

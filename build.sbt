@@ -26,7 +26,6 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "-Ywarn-nullary-override",
       "-Ywarn-nullary-unit",
       "-Xfuture",
-      "-target:jvm-1.8"
     ),
     logBuffered in Test := true,
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oD"),
@@ -88,14 +87,14 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
     }.taskValue
   )
   .jsSettings(
-    jsDependencies += ProvidedJS / "math.min.js" commonJSName "math",
     scalaJSUseMainModuleInitializer := true,
+    npmDependencies in Compile += "math" -> "6.6.4",
     sourceGenerators in Test += Def.task {
       val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
       IO.write(file, Settings.propConstants(10))
       Seq(file)
     }.taskValue,
-  )
+  ).enablePlugins(ScalaJSBundlerPlugin)
 
 lazy val mathbridgeJVM = mathbridge.jvm
 lazy val mathbridgeJS = mathbridge.js
