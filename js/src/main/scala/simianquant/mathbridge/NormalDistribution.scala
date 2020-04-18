@@ -8,7 +8,6 @@ object NormalDistribution extends NormalDistributionInterface {
   override final def cdf(x: Double): Double = (1.0 - MathJSFacade.erf(-x / sqrt2)) / 2.0
 
   // taken from https://gist.github.com/kmpm/1211922/6b7fcd0155b23c3dc71e6f4969f2c48785371292
-  @SuppressWarnings(Array("org.wartremover.warts.Equals"))
   override final def quantile(p: Double): Double = {
     require(p >= 0 && p <= 1, Strings.QuantileUndefined)
 

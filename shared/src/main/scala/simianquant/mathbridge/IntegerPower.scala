@@ -9,7 +9,6 @@ object IntegerPower {
     * @author Harshad Deo
     * @since 0.3.1
     */
-  @SuppressWarnings(Array("org.wartremover.warts.Equals", "org.wartremover.warts.Throw"))
   def integerPower(v: Int, pow: Int): Int = {
     if (pow == 2) v * v
     else if (pow == 3) v * v * v
@@ -47,7 +46,6 @@ object IntegerPower {
     * @author Harshad Deo
     * @since 0.1.4
     */
-  @SuppressWarnings(Array("org.wartremover.warts.Equals"))
   def floatPower(v: Float, pow: Int): Float = {
     if (pow == 2) v * v
     else if (pow == 3) v * v * v
@@ -77,7 +75,6 @@ object IntegerPower {
     * @author Harshad Deo
     * @since 0.1.4
     */
-  @SuppressWarnings(Array("org.wartremover.warts.Equals"))
   def doublePower(v: Double, pow: Int): Double = {
     if (pow == 2) v * v
     else if (pow == 3) v * v * v

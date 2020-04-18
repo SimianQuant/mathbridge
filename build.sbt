@@ -7,28 +7,6 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
     organization := "com.simianquant",
     version := Settings.versions.project,
     scalaVersion := Settings.versions.scala,
-    wartremoverErrors in (Compile, compile) ++= Seq(
-      Wart.ArrayEquals,
-      Wart.Any,
-      Wart.AnyVal,
-      Wart.EitherProjectionPartial,
-      Wart.Enumeration,
-      Wart.Equals,
-      Wart.ExplicitImplicitTypes,
-      Wart.JavaConversions,
-      Wart.JavaSerializable,
-      Wart.Null,
-      Wart.Option2Iterable,
-      Wart.OptionPartial,
-      Wart.Product,
-      Wart.PublicInference,
-      Wart.Return,
-      Wart.Serializable,
-      Wart.StringPlusAny,
-      Wart.Throw,
-      Wart.TraversableOps,
-      Wart.TryPartial
-    ),
     scalacOptions ++= List(
       ("-Xlint:adapted-args,nullary-unit,inaccessible,nullary-override,infer-any,doc-detached,private-shadow," +
         "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select,by-name-right-associative," +

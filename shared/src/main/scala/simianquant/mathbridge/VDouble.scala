@@ -52,7 +52,6 @@ final class VDoubleFixed private (private val backing: Array[Double]) extends VD
   override final def applyUnsafe(idx: Int): Double = backing(idx)
   override final def toString: String = backing.mkString("VDoubleFixed(", ", ", ")")
   override final def hashCode: Int = MurmurHash3.arrayHash(backing)
-  @SuppressWarnings(Array("org.wartremover.warts.Equals"))
   override final def equals(other: Any): Boolean = other match {
     case that: VDoubleFixed =>
       (this eq that) || (
