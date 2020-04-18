@@ -1,5 +1,7 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
+lazy val spire = crossProject(JVMPlatform, JSPlatform).in(file("spire"))
+
 lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
   .in(file("."))
   .settings(
@@ -9,11 +11,10 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
     scalaVersion := Settings.versions.scala,
     scalacOptions ++= List(
       ("-Xlint:adapted-args,nullary-unit,inaccessible,nullary-override,infer-any,doc-detached,private-shadow," +
-        "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select,by-name-right-associative," +
+        "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select," +
         "package-object-classes,unsound-match,stars-align,constant"),
       "-Ywarn-unused:imports,patvars,privates,locals",
       "-opt:l:method",
-      "-Ywarn-unused-import",
       "-deprecation",
       "-unchecked",
       "-explaintypes",
@@ -21,11 +22,6 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "UTF-8",
       "-feature",
       "-Xlog-reflective-calls",
-      "-Ywarn-inaccessible",
-      "-Ywarn-infer-any",
-      "-Ywarn-nullary-override",
-      "-Ywarn-nullary-unit",
-      "-Xfuture",
     ),
     logBuffered in Test := true,
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oD"),
@@ -37,7 +33,6 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
     libraryDependencies ++= Seq(
       "org.scalatest" %%% "scalatest" % Settings.versions.scalatest % "test",
       "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test",
-      "org.typelevel" %%% "spire" % Settings.versions.spire
     ),
     scmInfo := Some(
       ScmInfo(
