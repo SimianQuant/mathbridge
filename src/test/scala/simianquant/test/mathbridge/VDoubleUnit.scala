@@ -1,9 +1,9 @@
 package simianquant.test.mathbridge
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import simianquant.mathbridge.{VDoubleFixed, VDoubleRepeating}
 
-final class VDoubleUnit extends FlatSpec {
+final class VDoubleUnit extends AnyFlatSpec {
 
   it should "pass construction tests" in {
     val vdr = VDoubleRepeating(math.Pi)

@@ -2,9 +2,9 @@ package simianquant.test.mathbridge
 
 import simianquant.mathbridge.IntegerPower
 import simianquant.mathbridge.support.Strings
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-final class IntegerPowerIntegerUnit extends FlatSpec {
+final class IntegerPowerIntegerUnit extends AnyFlatSpec {
 
   it should "pass power 0 tests" in {
     assert(

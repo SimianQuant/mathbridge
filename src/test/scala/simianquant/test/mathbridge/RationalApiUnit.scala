@@ -1,8 +1,8 @@
 package simianquant.test.mathbridge
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-final class RationalApiUnit extends FlatSpec {
+final class RationalApiUnit extends AnyFlatSpec {
 
   it should "pass compilation tests" in {
     import simianquant.mathbridge.RationalApi._

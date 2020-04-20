@@ -1,9 +1,9 @@
 package simianquant.test.mathbridge
 
 import simianquant.mathbridge.IntegerPower
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-final class IntegerPowerFloatUnit extends FlatSpec {
+final class IntegerPowerFloatUnit extends AnyFlatSpec {
 
   it should "pass power 0 tests" in {
     assert(java.lang.Float.isInfinite(IntegerPower.floatPower(0, -5)))

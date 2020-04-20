@@ -1,11 +1,11 @@
 package simianquant.test.mathbridge
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import simianquant.mathbridge.SpireComplexDoubleApi._
 import simianquant.mathbridge.{SpireComplexDoubleDelegate => SD}
 import spire.math.Complex
 
-final class SpireComplexDoubleApiUnit extends FlatSpec {
+final class SpireComplexDoubleApiUnit extends AnyFlatSpec {
 
   it should "pass construction tests" in {
     assertCompiles("val a: SpireComplexDouble = 1")
@@ -34,7 +34,7 @@ final class SpireComplexDoubleApiUnit extends FlatSpec {
     assert(SCD.one == Complex.one[Double])
     assert(SCD.i == Complex.i[Double])
     assert(SCD(3.14) == Complex[Double](3.14))
-    assert(SCD(1.23, 2l) == Complex[Double](1.23, 2L))
+    assert(SCD(1.23, 2L) == Complex[Double](1.23, 2L))
     assert(SCD.polar(1.1, math.Pi / 5) == Complex.polar[Double](1.1, math.Pi / 5))
   }
 

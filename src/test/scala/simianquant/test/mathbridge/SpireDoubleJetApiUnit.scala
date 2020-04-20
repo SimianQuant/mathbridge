@@ -1,11 +1,11 @@
 package simianquant.test.mathbridge
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import simianquant.mathbridge.SpireDoubleJetApi._
 import simianquant.mathbridge.{SpireDoubleJetDelegate => SD}
 import spire.math.Jet
 
-final class SpireDoubleJetApiUnit extends FlatSpec {
+final class SpireDoubleJetApiUnit extends AnyFlatSpec {
 
   it should "pass construction failure tests" in {
     assertTypeError("val a: SpireDoubleJet = 1")
