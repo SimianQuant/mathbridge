@@ -1,6 +1,4 @@
-import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
-
-lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
+lazy val mathbridge = project
   .in(file("."))
   .settings(
     name := "mathbridge",
@@ -9,11 +7,10 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
     scalaVersion := Settings.versions.scala,
     scalacOptions ++= List(
       ("-Xlint:adapted-args,nullary-unit,inaccessible,nullary-override,infer-any,doc-detached,private-shadow," +
-        "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select,by-name-right-associative," +
-        "package-object-classes,unsound-match,stars-align,constant"),
+        "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select," +
+        "package-object-classes,stars-align,constant"),
       "-Ywarn-unused:imports,patvars,privates,locals",
       "-opt:l:method",
-      "-Ywarn-unused-import",
       "-deprecation",
       "-unchecked",
       "-explaintypes",
@@ -21,11 +18,8 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "UTF-8",
       "-feature",
       "-Xlog-reflective-calls",
-      "-Ywarn-inaccessible",
-      "-Ywarn-infer-any",
-      "-Ywarn-nullary-override",
-      "-Ywarn-nullary-unit",
-      "-Xfuture",
+      "-Ywarn-dead-code",
+      "-Ywarn-value-discard"
     ),
     logBuffered in Test := true,
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oD"),
@@ -35,9 +29,9 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       "-implicits"
     ),
     libraryDependencies ++= Seq(
-      "org.scalatest" %%% "scalatest" % Settings.versions.scalatest % "test",
-      "org.scalacheck" %%% "scalacheck" % Settings.versions.scalacheck % "test",
-      "org.typelevel" %%% "spire" % Settings.versions.spire
+      "org.scalatest" %% "scalatest" % Settings.versions.scalatest % "test",
+      "org.scalacheck" %% "scalacheck" % Settings.versions.scalacheck % "test",
+      "org.typelevel" %% "spire" % Settings.versions.spire
     ),
     scmInfo := Some(
       ScmInfo(
@@ -64,81 +58,39 @@ lazy val mathbridge = crossProject(JVMPlatform, JSPlatform)
       if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
       else Some("releases" at nexus + "service/local/staging/deploy/maven2")
     },
-    publishMavenStyle := true
-  )
-  .jvmSettings(
+    publishMavenStyle := true,
     parallelExecution in Test := true,
     fork := true,
     libraryDependencies += "org.apache.commons" % "commons-math3" % Settings.versions.commonsMath,
-    scalacOptions ++= Seq(
-      "-Ywarn-dead-code",
-      "-Ywarn-value-discard"
-    ),
-    javaOptions ++= Seq(
-      "-d64",
-      "-XX:+HeapDumpOnOutOfMemoryError",
-      "-XX:+UseG1GC",
-      "-XX:+UseStringDeduplication",
-      "-Xmx3072m"),
     sourceGenerators in Test += Def.task {
       val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
       IO.write(file, Settings.propConstants(1))
       Seq(file)
     }.taskValue
   )
-  .jsSettings(
-    scalaJSUseMainModuleInitializer := true,
-    npmDependencies in Compile += "math" -> "6.6.4",
-    sourceGenerators in Test += Def.task {
-      val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
-      IO.write(file, Settings.propConstants(10))
-      Seq(file)
-    }.taskValue,
-  ).enablePlugins(ScalaJSBundlerPlugin)
 
-lazy val mathbridgeJVM = mathbridge.jvm
-lazy val mathbridgeJS = mathbridge.js
-
-lazy val cleanAll = taskKey[Unit]("Cleans everything")
-lazy val compileAll = taskKey[Unit]("Compiles everything")
 lazy val testAll = taskKey[Unit]("Tests everything")
 lazy val buildCoverage = taskKey[Unit]("Generate coverage report")
 lazy val publishLocalSafeAll = taskKey[Unit]("Publishes everything locally")
 
 lazy val releaseCommand = Command.command("release") { state =>
-  "cleanAll" :: "testAll" :: "mathbridgeJVM/publishSigned" :: "mathbridgeJS/publishSigned" :: "mathbridgeJVM/sonatypeRelease" :: state
-}
-
-cleanAll in ThisBuild := {
-  clean.in(mathbridgeJVM).value
-  clean.in(mathbridgeJS).value
-}
-
-compileAll in ThisBuild := {
-  compile.in(mathbridgeJVM, Test).value
-  compile.in(mathbridgeJS, Test).value
-}
-
-testAll in ThisBuild := {
-  test.in(mathbridgeJS, Test).value
-  test.in(mathbridgeJVM, Test).value
+  "clean" :: "test" :: "publishSigned" :: "sonatypeRelease" :: state
 }
 
 buildCoverage in ThisBuild := Def
   .sequential(
-    clean.in(mathbridgeJVM),
-    test.in(mathbridgeJVM, Test),
-    coverageReport.in(mathbridgeJVM)
+    clean.in(mathbridge),
+    test.in(mathbridge, Test),
+    coverageReport.in(mathbridge)
   )
   .value
 
 publishLocalSafeAll in ThisBuild := Def
   .sequential(
-    cleanAll,
-    compileAll,
-    testAll,
-    publishLocal.in(mathbridgeJVM),
-    publishLocal.in(mathbridgeJS)
+    clean,
+    compile,
+    test,
+    publishLocal,
   )
   .value
 
