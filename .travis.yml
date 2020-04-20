@@ -1,4 +1,4 @@
-sudo: false
+os: linux
 
 cache:
   directories:
@@ -14,16 +14,16 @@ before_cache:
 language: scala
 
 scala:
-  - 2.12.8
+  - 2.13.1
 
 jdk:
-  - oraclejdk8
+  - openjdk11
 
-dist: trusty
+dist: bionic
 
 script: 
-  - sbt ++$TRAVIS_SCALA_VERSION testAll
+  - sbt test
   - sbt coverage buildCoverage
 
 after_success:
-  - sbt 'project mathbridgeJVM' coveralls
+  - sbt coveralls
