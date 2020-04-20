@@ -9,8 +9,8 @@ object Settings {
   }
 
   def propConstants(factor: Int): String = s"""|package simianquant.test.mathbridge
-                                               | 
-                                               |object TestConstants {
-                                               |  final val IntegerPowerRunCount = ${10000000 / factor}
-                                               |}""".stripMargin
+    | 
+    |object TestConstants {
+    |  final val IntegerPowerRunCount = ${10000000 / factor}
+    |}""".stripMargin
 }

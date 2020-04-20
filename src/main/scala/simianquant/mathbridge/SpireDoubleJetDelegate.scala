@@ -23,7 +23,8 @@ trait SpireDoubleJetDelegate {
       implicitly[Signed[Double]],
       implicitly[Trig[Double]],
       implicitly[NRoot[Double]],
-      implicitly[CModule[Array[Double], Double]])
+      implicitly[CModule[Array[Double], Double]]
+    )
   }
 
   final def add(a: Jet[Double], b: Double): Jet[Double] = a.+(b)(fld)

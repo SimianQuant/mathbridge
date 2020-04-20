@@ -12,10 +12,11 @@ final class JetFDEquivalence extends Properties("Jet") {
   private val _h = 1e-6
   private implicit val _dim: JetDim = JetDim(1)
 
-  override def overrideParameters(p: Parameters) = 
-    p.withMinSuccessfulTests( TestConstants.IntegerPowerRunCount / 20).withWorkers(Runtime.getRuntime().availableProcessors())
+  override def overrideParameters(p: Parameters) =
+    p.withMinSuccessfulTests(TestConstants.IntegerPowerRunCount / 20)
+      .withWorkers(Runtime.getRuntime().availableProcessors())
 
-  property("normal cdf") =  {
+  property("normal cdf") = {
     forAll(Gen.choose(-5.0, 5.0)) { x =>
       val _eps1 = 1e-15
       val _eps2 = 1e-9
@@ -26,7 +27,7 @@ final class JetFDEquivalence extends Properties("Jet") {
       val resJet = SpireDoubleJetDelegate.cnorm(jet)
 
       val realDiff = math.abs(resJet.real - expectedReal)
-        // val realDiff = 11.0;
+      // val realDiff = 11.0;
       val residualDiff = math.abs(resJet.infinitesimal(0) - expectedResidual)
 
       if (realDiff > _eps1) {
@@ -35,12 +36,12 @@ final class JetFDEquivalence extends Properties("Jet") {
         println(s"residual failed. diff: $residualDiff x: $x, expectedResidual: $expectedResidual, actual: ${resJet
           .infinitesimal(0)}")
       }
-      
+
       (realDiff < _eps1) && (residualDiff < _eps2)
     }
   }
 
-  property("normal quantile") =  {
+  property("normal quantile") = {
     forAll(Gen.choose(0.001, 0.999)) { x =>
       if (x < 1e-3) {
         true
@@ -64,7 +65,8 @@ final class JetFDEquivalence extends Properties("Jet") {
         } else if (residualDiff > _eps2 && residualQuot > _eps2) {
           println(
             s"residual failed. diff: $residualDiff quot: $residualQuot x: $x, expectedResidual: $expectedResidual, actual: ${resJet
-              .infinitesimal(0)}")
+              .infinitesimal(0)}"
+          )
         }
 
         (realDiff < _eps1) && ((residualDiff < _eps2) || (residualQuot < _eps2))

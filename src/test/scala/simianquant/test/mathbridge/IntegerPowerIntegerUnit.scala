@@ -8,15 +8,20 @@ final class IntegerPowerIntegerUnit extends AnyFlatSpec {
 
   it should "pass power 0 tests" in {
     assert(
-      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -5)).getMessage == Strings.NegativePowerZero)
+      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -5)).getMessage == Strings.NegativePowerZero
+    )
     assert(
-      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -4)).getMessage == Strings.NegativePowerZero)
+      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -4)).getMessage == Strings.NegativePowerZero
+    )
     assert(
-      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -3)).getMessage == Strings.NegativePowerZero)
+      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -3)).getMessage == Strings.NegativePowerZero
+    )
     assert(
-      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -2)).getMessage == Strings.NegativePowerZero)
+      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -2)).getMessage == Strings.NegativePowerZero
+    )
     assert(
-      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -1)).getMessage == Strings.NegativePowerZero)
+      intercept[IllegalArgumentException](IntegerPower.integerPower(0, -1)).getMessage == Strings.NegativePowerZero
+    )
     assert(intercept[IllegalArgumentException](IntegerPower.integerPower(0, 0)).getMessage == Strings.PowerZeroZero)
     assert(IntegerPower.integerPower(0, 1) == 0)
     assert(IntegerPower.integerPower(0, 2) == 0)

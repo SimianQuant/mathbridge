@@ -90,7 +90,7 @@ publishLocalSafeAll in ThisBuild := Def
     clean,
     compile,
     test,
-    publishLocal,
+    publishLocal
   )
   .value
 
