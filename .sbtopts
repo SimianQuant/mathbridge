@@ -1,9 +1,0 @@
--J-Xmx8G
--J-XX:MaxMetaspaceSize=2048M
--J-XX:+UseG1GC
--J-XX:+UseStringDeduplication
--J-XX:+CMSClassUnloadingEnabled
--J-XX:ReservedCodeCacheSize=256M
--Dplay.server.http.idleTimeout=600s
--Dsbt.jse.engineType=Node
-
