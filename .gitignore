@@ -1,5 +1,8 @@
 *.class
 *.log
+.metals
+.vscode
+.bloop
 
 # sbt specific
 .cache/
