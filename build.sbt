@@ -6,9 +6,17 @@ lazy val mathbridge = project
     version := Settings.versions.project,
     scalaVersion := Settings.versions.scala,
     scalacOptions ++= List(
-      ("-Xlint:adapted-args,nullary-unit,inaccessible,nullary-override,infer-any,doc-detached,private-shadow," +
-        "type-parameter-shadow,poly-implicit-overload,option-implicit,delayedinit-select," +
-        "package-object-classes,stars-align,constant"),
+      "-Xlint:_",
+      "-Wdead-code",
+      "-Wextra-implicit",
+      "-Wnumeric-widen",
+      "-Woctal-literal",
+      "-Wunused:imports",
+      "-Wunused:patvars",
+      "-Wunused:privates",
+      "-Wunused:locals",
+      "-Wunused:explicits",
+      "-Wunused:implicits",
       "-Ywarn-unused:imports,patvars,privates,locals",
       "-opt:l:method",
       "-deprecation",
@@ -61,7 +69,7 @@ lazy val mathbridge = project
     publishMavenStyle := true,
     parallelExecution in Test := true,
     fork := true,
-    libraryDependencies += "org.apache.commons" % "commons-math3" % Settings.versions.commonsMath,
+    libraryDependencies += "org.apache.commons" % "commons-math3" % Settings.versions.commonsMath
   )
 
 lazy val testAll = taskKey[Unit]("Tests everything")
