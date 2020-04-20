@@ -62,11 +62,6 @@ lazy val mathbridge = project
     parallelExecution in Test := true,
     fork := true,
     libraryDependencies += "org.apache.commons" % "commons-math3" % Settings.versions.commonsMath,
-    sourceGenerators in Test += Def.task {
-      val file = (sourceManaged in Test).value / "simianquant" / "test" / "mathbridge"
-      IO.write(file, Settings.propConstants(1))
-      Seq(file)
-    }.taskValue
   )
 
 lazy val testAll = taskKey[Unit]("Tests everything")

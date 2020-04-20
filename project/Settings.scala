@@ -7,10 +7,4 @@ object Settings {
     val scalacheck: String = "1.14.3"
     val spire: String = "0.17.0-M1"
   }
-
-  def propConstants(factor: Int): String = s"""|package simianquant.test.mathbridge
-    | 
-    |object TestConstants {
-    |  final val IntegerPowerRunCount = ${10000000 / factor}
-    |}""".stripMargin
 }
